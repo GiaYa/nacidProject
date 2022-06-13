@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.nacidtest.mapper.NacidUserMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.nacidtest.entity.NacidUser">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="age" column="age" jdbcType="INTEGER"/>
+            <result property="sex" column="sex" jdbcType="VARCHAR"/>
+            <result property="ucid" column="ucid" jdbcType="VARCHAR"/>
+            <result property="tel" column="tel" jdbcType="VARCHAR"/>
+            <result property="address" column="address" jdbcType="VARCHAR"/>
+            <result property="isvaccination" column="isvaccination" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="selectuser" resultMap="BaseResultMap">
+        select * from nacid_user where name like #{name}
+    </select>
+    <select id="selectname" resultMap="BaseResultMap">
+        select * from nacid_user where name = #{name}
+    </select>
+    <insert id="adduser">
+        insert into nacid_user (name,age,sex,ucid,tel,address,isvaccination) values (#{name},#{age},#{sex},#{ucid},#{tel},#{address},#{isvaccination})
+    </insert>
+    <update id="updatauser">
+        update nacid_user set name=#{name},age=#{age},sex=#{sex},tel=#{tel},address=#{address},isvaccination=#{isvaccination} where id=#{id}
+    </update>
+    <delete id="deleteid">
+        delete from nacid_user where id = #{id}
+    </delete>
+    <sql id="Base_Column_List">
+        id,name,age,
+        sex,ucid,tel,
+        address,isvaccination
+    </sql>
+</mapper>
