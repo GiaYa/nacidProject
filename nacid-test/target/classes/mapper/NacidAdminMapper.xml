@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.nacidtest.mapper.NacidAdminMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.nacidtest.entity.NacidAdmin">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="admin" column="admin" jdbcType="VARCHAR"/>
+            <result property="passwd" column="passwd" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="loginQuery" parameterType="com.example.nacidtest.entity.NacidAdmin">
+        select admin,passwd from nacid_admin where admin = #{admin} and passwd = #{passwd}
+    </select>
+    <insert id="inserQuery" parameterType="com.example.nacidtest.entity.NacidAdmin">
+        insert into nacid_admin (admin,passwd,id) values (#{admin},#{passwd})
+    </insert>
+    <sql id="Base_Column_List">
+        id,admin,passwd
+    </sql>
+</mapper>
